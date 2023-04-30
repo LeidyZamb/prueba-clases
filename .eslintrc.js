@@ -9,7 +9,10 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-shadow': ['error'],
         'no-shadow': 'off',
+        'indent': ['error', 2],
         'no-undef': 'off',
+        'react/self-closing-comp': 'off',
+        'prettier/prettier': 'off',
       },
     },
   ],
