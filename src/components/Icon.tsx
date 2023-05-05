@@ -17,9 +17,9 @@ const Icon = (props: IconProps) => {
   } = props;
   return (
     <RemixIcon
-    name={`${name}-${type}`}
-    color={color}
-    size={size}
+      name={`${name}-${type}`}
+      color={color}
+      size={size}
     />
   );
 };

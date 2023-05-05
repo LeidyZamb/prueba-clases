@@ -7,8 +7,8 @@ import Icon from '../components/Icon';
 const InputsScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.LILA }}>
-      <Stack space='md' w='2/3' mx='auto'>
-        <Input size='xs' placeholder='Hola' placeholderTextColor='black'
+      <Stack space="md" w="2/3" mx="auto">
+        <Input size="xs" placeholder="Hola" placeholderTextColor="black"
           _focus={{
             borderColor: 'amber.100',
           }}/>
@@ -18,12 +18,12 @@ const InputsScreen = () => {
         <FormControl isRequired>
           <Stack>
             <FormControl.Label>Password</FormControl.Label>
-            <Input 
-            leftElement={<Icon name='lock' type='line' size='20'/>}
-            placeholderTextColor='white' 
-            placeholder='password' 
-            type='password' 
-            defaultValue='123'/>
+            <Input
+              leftElement={<Icon name="lock" type="line" size="20"/>}
+              placeholderTextColor="white"
+              placeholder="password"
+              type="password"
+              defaultValue="123"/>
           </Stack>
         </FormControl>
       </Box>

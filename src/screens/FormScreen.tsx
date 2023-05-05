@@ -1,14 +1,38 @@
-/* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../config/colors';
-import { Box, Button, FormControl, Input, Stack, Text } from 'native-base';
+import { Box, Button, FormControl, Icon, IconButton, Input, Stack, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 import { useUserForm } from '../hooks/useUserForm';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import { StackParamsList } from '../navigation/StackParams';
+import RemixIcon from '../components/Icon';
 
 const FormScreen = () => {
   const { cedula, setCedula, firstNameErrorMessage, firstName, setFirstName, isValidFirstName, validateForm } = useUserForm();
-  console.log('cedula: ', cedula);
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>();
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => {
+        return (
+          <IconButton
+            borderRadius={100}
+            icon = {
+              <Icon
+                as ={<RemixIcon name="arrow-left" color= "black" size={20}/>}
+              />
+            }
+            onPress = {() => navigation.goBack()}
+          />
+        );
+      },
+      headerStyle:{
+        backgroundColor: 'skyblue',
+      },
+    });
+  }, [navigation]);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.LILA }}>

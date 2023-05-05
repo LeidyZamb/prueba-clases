@@ -9,7 +9,7 @@ export const useUserForm = () => {
   const [isValidFirstName, setisValidFirstName] = useState(false);
 
   useEffect(() => {
-    setisValidCedula(cedula !== '' && cedula.trim().length > 0)
+    setisValidCedula(cedula !== '' && cedula.trim().length > 0);
   }, [cedula]);
 
   useEffect(() => {
@@ -31,6 +31,6 @@ export const useUserForm = () => {
   return {
     cedula, setCedula, isValidCedula,
     validateForm, firstNameErrorMessage,
-    firstName, setFirstName, isValidFirstName
+    firstName, setFirstName, isValidFirstName,
   };
 };

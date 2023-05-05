@@ -1,6 +1,6 @@
 import React from 'react';
 import { NativeBaseProvider } from 'native-base';
-import FormScreen from './src/screens/FormScreen';
+import Navigation from './src/navigation/Navigation';
 
 const App = () => {
   return (
@@ -9,7 +9,8 @@ const App = () => {
       <FlexBoxScreen /> */}
       {/* <StacksScreen /> */}
       {/* <InputsScreen/> */}
-      <FormScreen />
+      {/* <FormScreen /> */}
+      <Navigation />
     </NativeBaseProvider>
 
   );

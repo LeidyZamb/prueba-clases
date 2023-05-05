@@ -8,14 +8,14 @@ const StacksScreen = () => {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <VStack>
-        <Center height='1/2' width='full' background='blueGray.100'>
+        <Center height="1/2" width="full" background="blueGray.100">
           <Text>Box 1</Text>
         </Center>
-        <HStack height='1/2'>
-          <Center width='1/2' background='amber.100'>
+        <HStack height="1/2">
+          <Center width="1/2" background="amber.100">
             <Text>Box 2.1</Text>
           </Center>
-          <Center width='1/2' background='amber.200'>
+          <Center width="1/2" background="amber.200">
             <Text>Box 2.2</Text>
           </Center>
         </HStack>
