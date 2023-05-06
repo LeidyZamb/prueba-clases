@@ -1,18 +1,16 @@
 import React from 'react';
 import { NativeBaseProvider } from 'native-base';
 import Navigation from './src/navigation/Navigation';
+import { Provider } from 'react-redux';
+import store from './src/redux/index';
 
 const App = () => {
   return (
-    <NativeBaseProvider>
-      {/* <FirstScreen />
-      <FlexBoxScreen /> */}
-      {/* <StacksScreen /> */}
-      {/* <InputsScreen/> */}
-      {/* <FormScreen /> */}
-      <Navigation />
-    </NativeBaseProvider>
-
+    <Provider store={store}>
+      <NativeBaseProvider>
+        <Navigation />
+      </NativeBaseProvider>
+    </Provider>
   );
 };
 
