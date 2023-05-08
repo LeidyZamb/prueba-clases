@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackParamsList } from './StackParams';
 import FormScreen from '../screens/FormScreen';
 import BottomTabNavigation from './BottomTabNavigation';
+import PokemonDetail from '../screens/PokemonDetail/PokemonDetail';
 
 const Stack = createNativeStackNavigator<StackParamsList>();
 
@@ -24,6 +25,13 @@ export const HomeNavigator = () => (
       options={{
         headerShown: true,
         headerTitle: 'Form Screen',
+      }}
+    />
+    <Stack.Screen
+      name="PokemonDetails"
+      component={PokemonDetail}
+      options={{
+        headerShown: true,
       }}
     />
   </Stack.Navigator>

@@ -1,9 +1,13 @@
-import { Pokemon, PokemonState } from './pokemons.interface';
+import { Pokemon, PokemonDetail, PokemonState } from './pokemons.interface';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const initialState: PokemonState = {
   isLoadingPokemons: false,
   pokemonsList: [],
+  pokemonSelected: {
+    abilities: [],
+    base_experience: 0,
+  },
 };
 
 const pokemonSlice = createSlice({
@@ -16,9 +20,12 @@ const pokemonSlice = createSlice({
     setIsLoadingPokemons: (state: PokemonState, action: PayloadAction<boolean>) => {
       state.isLoadingPokemons = action.payload;
     },
+    setPokemonSelected: (state: PokemonState, action: PayloadAction<PokemonDetail>) => {
+      state.pokemonSelected = action.payload;
+    },
   },
 });
 
 const pokemonReducer = pokemonSlice.reducer;
-export const {setPokemonsList, setIsLoadingPokemons} = pokemonSlice.actions;
+export const {setPokemonsList, setIsLoadingPokemons, setPokemonSelected} = pokemonSlice.actions;
 export default pokemonReducer;
