@@ -1,37 +1,71 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { ActivityIndicator, SafeAreaView, StyleSheet } from 'react-native';
 import { COLORS } from '../../config/colors';
-import { Button } from 'native-base';
+import { Button, Center, ScrollView, Text } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParamsList } from '../../navigation/StackParams';
-import { useReduxSelector } from '../../redux/index';
-import { useDispatch } from 'react-redux';
+import { useReduxDispatch, useReduxSelector } from '../../redux/index';
 import { setAuthtentication } from '../../redux/reducers/authReducers/auth';
+import { fetchPokemons } from '../../redux/services/poke.service';
 
 const HomeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>();
-  //const { status } = useSelector((state: Store) => state.auth);
-  const { status } = useReduxSelector(state => state.auth);
-  const dispatch = useDispatch();
-  console.log('status: ', status);
+  const { pokemonsList, isLoadingPokemons } = useReduxSelector(state => state.pokemon);
+  const dispatch = useReduxDispatch();
 
   useEffect(() => {
-    console.log('homeScreen');
+    dispatch( fetchPokemons() );
+  }, [dispatch]);
 
-    return () => {
-      console.log('return homeScreen');
-    };
-  }, []);
+  console.log(pokemonsList);
 
   const onPress = () => {
-    navigation.navigate('FormScreen');
-    dispatch(setAuthtentication('not-authenticated'));
+    dispatch(setAuthtentication('authenticated'));
+    navigation.push('FormScreen');
   };
+
+  const renderPokemons = () => {
+    const pokemons: JSX.Element[] = [];
+    pokemonsList.forEach(pokemon => {
+      pokemons.push(<Text>{pokemon.name}</Text>);
+    });
+    return pokemons;
+  };
+
+  const renderPokemonsMap = () =>
+    pokemonsList.map(pokemon => {
+      return <Text>{pokemon.name}</Text>;
+    });
+
+
 
   return (
     <SafeAreaView style={styles.safeContainer}>
       <Button onPress={onPress}>Ir a FormScreen</Button>
+      {
+        isLoadingPokemons ? (
+          <Center flex={1}>
+            <ActivityIndicator size={'large'} color={COLORS.WHITE} />
+          </Center>
+        ) : (
+          <ScrollView>
+            {
+              pokemonsList.map(pokemon => {
+                return <Text>{pokemon.name}</Text>;
+              })
+            }
+            <Text></Text>
+            <Text>render pokemons</Text>
+            <Text></Text>
+            { renderPokemons() }
+            <Text></Text>
+            <Text>render pokemons with map</Text>
+            <Text></Text>
+            { renderPokemonsMap() }
+          </ScrollView>
+        )
+      }
     </SafeAreaView>
   );
 };
