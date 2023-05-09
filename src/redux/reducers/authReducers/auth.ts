@@ -2,7 +2,7 @@ import { AuthState, User } from './auth.interface';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: AuthState = {
-  status: 'not-authenticated',
+  status: 'cheking',
   user: {
     email: '',
     firstname: '',
